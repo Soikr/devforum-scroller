@@ -78,7 +78,7 @@ def open_posts():
 
     for method, path in posts:
         post = driver.find_element(method, path)
-        print("Post:", post.text)
+        print("\nPost:", post.text)
         post.click()
         scroll()
         driver.back()
@@ -131,7 +131,6 @@ def main():
 
 print("Setting up...")
 main()
-print("Beginning tasks")
 open_posts()
-print("Tasks finished, closing browser")
+print("\nTasks finished, closing browser")
 driver.quit()
