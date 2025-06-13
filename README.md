@@ -5,7 +5,7 @@
 > I am not liable for any damages you cause with this.
 
 # Roblox Devforum Automation
-![image](https://gist.github.com/user-attachments/assets/a96c167a-e88a-43e6-a651-df6d527be667)
+![image](https://github.com/user-attachments/assets/d163d3d0-8e73-4427-a33f-0e3fb7167b87)
 
 It will automatically log you in to devforums if you provide it proper cookies.
 
