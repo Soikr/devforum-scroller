@@ -1,31 +1,84 @@
 > [!CAUTION]
-> This is a purely EDUCATIONAL project, do not run it for the purpose of benefit.
-> To note, I did not benefit in the creation of this program, I had these posts open in my normal browser already. I merely wished to experiment with Selenium :)
+> **This is a purely EDUCATIONAL project. Do not run it for personal gain or benefit.**
 >
-> I am not liable for any damages you cause with this.
+> I did not benefit in the creation of this program—all posts were opened in my browser as part of normal forum usage.  
+> This project is an experiment with Selenium for learning purposes only.
+>
+> **I am not liable** for any damages or misuse.
 
-# Roblox Devforum Automation
-![image](https://gist.github.com/user-attachments/assets/a96c167a-e88a-43e6-a651-df6d527be667)
+# Roblox DevForum Automation
 
-It will automatically log you in to devforums if you provide it proper cookies.
+![Preview](preview.mp4)
 
-It will select the first 5 posts in Help and Feedback, reading every reply.
+A tool to automate reading the latest posts from the Roblox DevForum’s **Help and Feedback** and **Bug Reports** categories.  
+It can log in automatically if you provide valid cookies and will skip replies you’ve already read.
 
-If you've already read replies, the script will skip them.
+---
 
-## Instructions:
-### Cookie setup
-Use a tool like [Cookie-Editor](https://cookie-editor.com/) to export your cookies as json.
+## Table of Contents
 
-You only need to export ROBLOSECURITY, but the script doesnt care if you export everything.
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Cookie Setup](#cookie-setup)
+- [Installation](#installation)
+  - [Install Method 1: Poetry](#method-1-poetry)
+  - [Install Method 2: pip](#method-2-pip)
+  - [Install Method 3: Nix](#method-3-nix)
 
-Copy your exported cookies into a cookies.json file in this directory.
+---
+
+## Features
+
+- Uses cookie file for authentication
+- Can log output to files with timestamps
+- Set read time for replies and delays for posts
+- Set percentage of replies to read in each post
+
+---
+
+## Prerequisites
+
+- **Python 3.13** installed
+- Poetry, pip, or Nix for installation
+
+---
+
+## Cookie Setup
+
+1. Use a tool like [Cookie-Editor](https://cookie-editor.com/) to export your browser cookies as JSON.
+2. **You only need to export the `ROBLOSECURITY` cookie**, but exporting all cookies is fine.
+3. Save your exported cookies as `cookies.json` in the project directory, or use the `--cookie-file` option to specify a different file path.
 
 > [!CAUTION]
-> Do NOT share your ROBLOSECURITY cookies.
+> **Never share your `ROBLOSECURITY` cookie.**
 >
-> Keep this file safe at all costs, or you can get hacked.
+> This cookie grants full access to your Roblox account.  
+> Keep your `cookies.json` file safe and secure!
 
-### Running script
-Simply run `poetry run python main.py --continue`
-Only run if you agree to the cautionary warning.
+---
+
+## Installation
+
+Choose one of the following methods:
+
+### Method 1: Poetry
+
+```bash
+poetry install
+poetry run devforumauto --help
+```
+
+### Method 2: pip
+
+```bash
+pip install git+https://github.com/Soikr/devforumauto.git
+devforumauto --help
+```
+
+### Method 3: Nix
+
+```bash
+nix run github:Soikr/devforumauto
+# Or to pass arguments:
+nix run github:Soikr/devforumauto -- --help
+```

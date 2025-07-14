@@ -1,6 +1,6 @@
 __pycache__/
 .idea/
 dist/
-result/
+result
 logs/
 cookies.json
