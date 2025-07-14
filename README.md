@@ -21,9 +21,9 @@ It can log in automatically if you provide valid cookies and will skip replies y
 - [Prerequisites](#prerequisites)
 - [Cookie Setup](#cookie-setup)
 - [Installation](#installation)
-  - [Install Method 1: Poetry](#method-1-poetry)
-  - [Install Method 2: pip](#method-2-pip)
-  - [Install Method 3: Nix](#method-3-nix)
+  - [Method 1: Poetry](#method-1-poetry)
+  - [Method 2: pip](#method-2-pip)
+  - [Method 3: Nix](#method-3-nix)
 
 ---
 
@@ -33,6 +33,8 @@ It can log in automatically if you provide valid cookies and will skip replies y
 - Can log output to files with timestamps
 - Set read time for replies and delays for posts
 - Set percentage of replies to read in each post
+
+You can also run the tool without arguments (provided cookies.json exists), there are optimized defaults.
 
 ---
 
