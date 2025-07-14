@@ -10,23 +10,32 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, poetry2nix }:
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+    poetry2nix,
+    ...
+  }:
     flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs { inherit system; };
-      p2n = poetry2nix.lib.mkPoetry2Nix { inherit pkgs; };
-      poetryApp = p2n.mkPoetryApplication {
+      pkgs = import nixpkgs {inherit system;};
+      inherit (poetry2nix.lib.mkPoetry2Nix {inherit pkgs;}) mkPoetryApplication defaultPoetryOverrides;
+    in {
+      packages.default = mkPoetryApplication {
         projectDir = self;
-        overrides = p2n.defaultPoetryOverrides.extend (self: super: {
+        python = pkgs.python313;
+
+        overrides = defaultPoetryOverrides.extend (final: prev: {
           selenium = pkgs.python313Packages.selenium;
           pex = pkgs.python313Packages.pex;
         });
-        # These packages will be available at runtime for your app
-        extraPkgs = ps: [ pkgs.firefox pkgs.geckodriver ];
+
+        propagatedBuildInputs = [
+          pkgs.firefox
+          pkgs.geckodriver
+        ];
       };
-    in {
-      packages = {
-        devforumauto = poetryApp;
-        default = poetryApp;
-      };
+
+      formatter = pkgs.alejandra;
     });
 }
