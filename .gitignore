@@ -1,21 +1,6 @@
-# Python
 __pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-*.so
-
-# Virtual environments
-venv/
-env/
-.venv/
-
-# PyCharm
 .idea/
-*.iml
-
-# macOS
-.DS_Store
-
-# Sensitive or generated files
+dist/
+result/
+logs/
 cookies.json
