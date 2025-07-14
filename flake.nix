@@ -20,6 +20,8 @@
           selenium = pkgs.python313Packages.selenium;
           pex = pkgs.python313Packages.pex;
         });
+        # These packages will be available at runtime for your app
+        extraPkgs = ps: [ pkgs.firefox pkgs.geckodriver ];
       };
     in {
       packages = {
