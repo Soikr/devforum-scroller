@@ -8,7 +8,7 @@
 
 # Roblox DevForum Automation
 
-![Preview](preview.mp4)
+![Preview](preview.gif)
 
 A tool to automate reading the latest posts from the Roblox DevForum’s **Help and Feedback** and **Bug Reports** categories.  
 It can log in automatically if you provide valid cookies and will skip replies you’ve already read.
