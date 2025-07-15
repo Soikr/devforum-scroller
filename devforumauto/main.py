@@ -54,7 +54,7 @@ def main(pmin, rmin, rper, log, log_path, cookie_file):
     geckodriver_path = env("BROWSERDRIVER_PATH")
 
     options = FirefoxOptions()
-    # options.add_argument("--headless")
+    options.add_argument("--headless")
     if browser_bin:
         options.binary_location = browser_bin
 
