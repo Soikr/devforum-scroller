@@ -4,6 +4,8 @@ import re
 import time
 import logging
 import click
+import platform
+import glob
 from math import ceil
 from pathlib import Path
 
@@ -13,6 +15,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.firefox.service import Service as FirefoxService
 
 try:
     from tqdm import tqdm
@@ -44,10 +47,30 @@ def main(pmin, rmin, rper, log, log_path, cookie_file):
         'PERCENT_READ': round(rper, 2),
     }
 
+    def env(var, default=None):
+        return os.environ.get(var, default)
+
+    browser_env = env("BROWSER_PATH")
+    browser_binary_location = None
+    if browser_env:
+        if platform.system() == "Darwin":
+            browser_binary_location = os.path.join(browser_env, "Applications/Firefox.app/Contents/MacOS/firefox")
+        else:
+            browser_binary_location = os.path.join(browser_env, "bin/firefox")
+
+    geckodriver_path = env("BROWSERDRIVER_PATH")
+
     options = FirefoxOptions()
     options.add_argument("--headless")
-    driver = webdriver.Firefox(options=options)
-    driver.implicitly_wait(10)
+    if browser_binary_location:
+        options.binary_location = browser_binary_location
+
+    if geckodriver_path:
+        service = FirefoxService(executable_path=geckodriver_path)
+    else:
+        service = FirefoxService()
+
+    driver = webdriver.Firefox(service=service, options=options)
 
     try:
         def progress_sleep(seconds, desc="Waiting"):
